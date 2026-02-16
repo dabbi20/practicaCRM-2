@@ -17,3 +17,9 @@ class Client{
 
 let cliente1 = new Client("David Carrasco","davidack123456789@gmail.com","3134476364","Diseño web", "por favor contactame al cell para negociar")
 console.log(cliente1)
+
+/*VARIABLES GLOBALES DEL SISTEMA */
+
+let clientes =[]
+let nextID = 0
+let emails = new Set ()
