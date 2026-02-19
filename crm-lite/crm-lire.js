@@ -45,5 +45,13 @@ function normalizeEmail(email){
 /*FUNCION  */
 
 function guardarClientes(cliente){
+   if (!(cliente instanceof Client)){
+    return {ok: false, message: "Debe ser una instacia de Cliente"}
+   }
+   if(cliente.id !== null){
+return {ok: false, message:"El cliente ya tiene un ID no es posible asignar dos veces"}
+   }
 
 }
+
+
