@@ -29,6 +29,18 @@ function inNonEmptyString(x){
     return typeof x === "string" && x.trim().length > 0
 }
 
+/*FUNCION DONDE RECIBIMOS CORREO EN MINUSCULAS */
+
+/*PARA EVITAR ESTO 
+"DAVID@GMAIL.COM"
+" david@gmail.com "
+*/
+
+function normalizeEmail(email){
+    return email.trim().toLowerCase()
+}
+
+
 
 /*FUNCION  */
 
