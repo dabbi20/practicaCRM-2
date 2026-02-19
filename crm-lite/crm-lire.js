@@ -42,7 +42,7 @@ function normalizeEmail(email){
 
 
 
-/*FUNCION  */
+/*FUNCION DONDE VALIDAMOS QUE COMPLETEN LOS DATOS CORRESPONDIENTES A LA INSTANCIA */
 
 function guardarClientes(cliente){
    if (!(cliente instanceof Client)){
@@ -51,6 +51,26 @@ function guardarClientes(cliente){
    if(cliente.id !== null){
 return {ok: false, message:"El cliente ya tiene un ID no es posible asignar dos veces"}
    }
+if (!inNonEmptyString(cliente.nombre)){
+return {ok: false, message: "Nombre es obligatorio"}
+}
+if (!inNonEmptyString(cliente.email)){
+    return {ok: false, message: "Email es obligatorio"}
+}
+if (!inNonEmptyString(cliente.cell)){
+    return {ok: false, message: "Cell es obligatorio"}
+}
+if (!inNonEmptyString(cliente.servicio)){
+    return {ok: false, message: "Servicio es obligatorio"}
+}
+if (!inNonEmptyString(cliente.mensaje)){
+    return {ok: false, message: "Mensaje es obligatorio"}
+}
+
+const emailNorm = normalizeEmail(cliente.email)
+if(emails.has(emailNorm)){
+    return {ok: false, message: "El correo esta duplicado"}
+}
 
 }
 
