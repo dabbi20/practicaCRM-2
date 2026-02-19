@@ -71,7 +71,26 @@ const emailNorm = normalizeEmail(cliente.email)
 if(emails.has(emailNorm)){
     return {ok: false, message: "El correo esta duplicado"}
 }
+// MUTACION DEL SISTEMA (UNA VEZ VALIDADO)
+// SE LE ASIGNA EL PRIMER NUMERO DE NEXTID Y DESPUES SE LE ASIGNA UN +1
+cliente.id = nextID
+nextID += 1
+// GUARDAMOS EL EMAIL NORMALIZADO PARA EVITAR DUPLICADOS POR MAYUSCULAS O ESPACIOS
+cliente.email = emailNorm
+
+//Guardamos los datos
+clientes.push(cliente)
+emails.add(emailNorm)
 
 }
 
+// GENERAMOS UN RESUMEN DE LOS DATOS QUE QUEREMOS RETORNAR
+const resumen = {
+    id: cliente.id,
+    nombre: cliente.nombre,
+    servicio: cliente.servicio,
+    contacted: cliente.contacted,
+    created_at: cliente.created_at
+}
 
+return {ok: true, data: resumen}
