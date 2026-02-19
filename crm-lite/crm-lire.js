@@ -9,7 +9,7 @@ class Client{
         this.servicio = servicio;
         this.mensaje = mensaje;
         // DEFAUL CONTROLADOS POR SISTEMA
-        this.contacted = contacted;
+        this.contacted = false;
         this.id = null;
         this.created_at = new Date().toDateString();
         
@@ -82,8 +82,6 @@ cliente.email = emailNorm
 clientes.push(cliente)
 emails.add(emailNorm)
 
-}
-
 // GENERAMOS UN RESUMEN DE LOS DATOS QUE QUEREMOS RETORNAR
 const resumen = {
     id: cliente.id,
@@ -93,4 +91,16 @@ const resumen = {
     created_at: cliente.created_at
 }
 
+
+
 return {ok: true, data: resumen}
+
+}
+
+
+let c1 = new Client("David Carrasco", "DAVIDack123456789@gmail.com ", "3134476364", "Diseño web", "por favor contactame");
+console.log(guardarClientes(c1));     // ok true
+
+let c2 = new Client("Otro", "davidack123456789@gmail.com", "300", "SEO", "hola");
+console.log(guardarClientes(c2));     // ok false (duplicado)
+
