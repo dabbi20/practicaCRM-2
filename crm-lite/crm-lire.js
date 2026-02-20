@@ -104,3 +104,25 @@ console.log(guardarClientes(c1));     // ok true
 let c2 = new Client("Otro", "davidack123456789@gmail.com", "300", "SEO", "hola");
 console.log(guardarClientes(c2));     // ok false (duplicado)
 
+/*CONTRATO DE LA FUNCION LIST */
+
+
+function listClients(){
+    if(clientes.length === 0){
+        return {ok: false, message: "No existen clientes registrados"}
+    }
+    //RESUMEN SIN EXPONET TODO EL OBJETO
+
+    const lista = clientes.map(cliente => ({
+        id: cliente.id,
+        nombre: cliente.nombre,
+        email: cliente.email,
+        servicio: cliente.servicio,
+        contacted: cliente.contacted,
+        created_at: cliente.created_at
+    }))
+
+    return {ok: true, data:lista}
+}
+
+console.log(listClients())
