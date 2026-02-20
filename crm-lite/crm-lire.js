@@ -107,22 +107,49 @@ console.log(guardarClientes(c2));     // ok false (duplicado)
 /*CONTRATO DE LA FUNCION LIST */
 
 
-function listClients(){
-    if(clientes.length === 0){
-        return {ok: false, message: "No existen clientes registrados"}
-    }
-    //RESUMEN SIN EXPONET TODO EL OBJETO
+function listClients() {
 
-    const lista = clientes.map(cliente => ({
+    // 1️ Si no hay clientes, devolver lista vacía (no es error)
+    if (clientes.length === 0) {
+        return { ok: true, data: [] };
+    }
+
+    // 2️ Separar en dos grupos
+    const pendientes = clientes.filter(c => c.contacted === false);
+    const contactados = clientes.filter(c => c.contacted === true);
+
+    // 3️ Ordenar cada grupo por fecha DESC (más recientes primero)
+    pendientes.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    contactados.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+    // 4️ Unir grupos (pendientes primero)
+    const ordenFinal = pendientes.concat(contactados);
+
+    // 5️ Mapear a resumen (no devolver todo el objeto)
+    const lista = ordenFinal.map(cliente => ({
         id: cliente.id,
         nombre: cliente.nombre,
-        email: cliente.email,
         servicio: cliente.servicio,
         contacted: cliente.contacted,
         created_at: cliente.created_at
-    }))
+    }));
 
-    return {ok: true, data:lista}
+    return { ok: true, data: lista };
 }
 
-console.log(listClients())
+function getClientById(id){
+
+// CONVERTIR A NUMERO 
+const idNumber = Number(id)
+
+//VALIDAD ID
+
+    if (
+        Number.isNaN(idNumber) ||
+        !Number.isInteger(idNumber) ||
+        idNumber <= 0
+    ) {
+        return { ok: false, message: "ID no es válido" };
+    }
+
+}
