@@ -101,7 +101,7 @@ return {ok: true, data: resumen}
 let c1 = new Client("David Carrasco", "DAVIDack123456789@gmail.com ", "3134476364", "Diseño web", "por favor contactame");
 console.log(guardarClientes(c1));     // ok true
 
-let c2 = new Client("Otro", "davidack123456789@gmail.com", "300", "SEO", "hola");
+let c2 = new Client("Otro", "davidack12356789@gmail.com", "300", "SEO", "hola");
 console.log(guardarClientes(c2));     // ok false (duplicado)
 
 /*CONTRATO DE LA FUNCION LIST */
@@ -152,4 +152,54 @@ const idNumber = Number(id)
         return { ok: false, message: "ID no es válido" };
     }
 
+    //BUSCAR CLIENTE
+
+    const clienteEncontrado = clientes.find(cliente => cliente.id === idNumber)
+    //SI NO EXISTE
+if(!clienteEncontrado){
+    return {ok: false, message: "CLIENTE NO ENCONRADO"}
 }
+//SI EL CLIENTE SI EXISTE
+return {ok: true, data: clienteEncontrado}
+}
+
+function deleteClient(id) {
+  // Convertir a número
+  const idNumber = Number(id);
+
+  //  Validar ID
+  if (
+    Number.isNaN(idNumber) ||
+    !Number.isInteger(idNumber) ||
+    idNumber <= 0
+  ) {
+    return { ok: false, message: "ID no es válido" };
+  }
+
+  //  Buscar cliente
+  const idx = clientes.findIndex(cliente => cliente.id === idNumber);
+
+  //  Si no existe
+  if (idx === -1) {
+    return { ok: false, message: "CLIENTE NO ENCONTRADO" };
+  }
+  // GUARDAR EMAIL ANTES DE BORRAR
+  const guardarEmail = clientes[idx].email
+    //BORRAR EL ARRAY 
+
+  let [borrar] = clientes.splice(idx, 1)
+
+  //BORRAR DEL SET
+  emails.delete(guardarEmail)
+//RESPUESTA
+return {ok: true, data: {
+    id: deleted.id,
+      nombre: deleted.nombre,
+      email: deleted.email,
+      servicio: deleted.servicio,
+      contacted: deleted.contacted,
+      created_at: deleted.created_at,
+}}
+
+  }
+
