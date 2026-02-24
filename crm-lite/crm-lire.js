@@ -203,3 +203,36 @@ return {ok: true, data: {
 
   }
 
+  //FUNCION CONTACTED
+
+  //DECLARAMOS LA FUNCION
+
+  function markContacted(id, value){
+      // Convertir a número
+  const idNumber = Number(id);
+
+  //  Validar ID
+  if (
+    Number.isNaN(idNumber) ||
+    !Number.isInteger(idNumber) ||
+    idNumber <= 0
+  ) {
+    return { ok: false, message: "ID no es válido" };
+  }
+
+  //  Buscar cliente
+  const clienteEncontrado = clientes.find(cliente => cliente.id === idNumber);
+
+  //  Si no existe
+  if (!clienteEncontrado) {
+    return { ok: false, message: "CLIENTE NO ENCONTRADO" };
+  }
+
+  if(typeof value !== "boolean"){
+    return {ok:false, message:"Tipo de dato no valido"}
+  }
+clienteEncontrado.contacted = value;
+return {ok: true, data: clienteEncontrado}
+  }
+
+  //FUNCION UPDATE
