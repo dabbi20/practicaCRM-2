@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Art — Hobby: Programación</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="dot"></span>
+        <span class="name">CodeArt</span>
+      </div>
+      <nav class="nav">
+        <a href="#intro">Intro</a>
+        <a href="#gallery">Galería</a>
+        <a href="#comments">Comentarios</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- INTRO -->
+      <section id="intro" class="section">
+        <h1>Programación: mi hobby</h1>
+        <p class="muted">
+          Me gusta construir sistemas, resolver problemas y convertir ideas en
+          software. Este proyecto integra HTML/CSS/JS + Node.js (backend) y guarda
+          comentarios como “clientes” en memoria.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <h3>Clean Code</h3>
+            <p class="muted">Escribir para humanos, no solo para máquinas.</p>
+          </div>
+          <div class="card">
+            <h3>Arquitectura</h3>
+            <p class="muted">Orden y escalabilidad: rutas, controladores y servicios.</p>
+          </div>
+          <div class="card">
+            <h3>Backend</h3>
+            <p class="muted">Node.js + Express + CRUD en memoria.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALERÍA -->
+      <section id="gallery" class="section">
+        <h2>Galería</h2>
+        <p class="muted">Imágenes relacionadas con tecnología y programación.</p>
+
+        <div class="grid">
+          <div class="imgcard">
+            <img
+              src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop"
+              alt="Código en pantalla"
+            />
+            <div class="imgcap">Código en pantalla</div>
+          </div>
+
+          <div class="imgcard">
+            <img
+              src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop"
+              alt="Componentes / hardware"
+            />
+            <div class="imgcap">Hardware / componentes</div>
+          </div>
+
+          <div class="imgcard">
+            <img
+              src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?q=80&w=1200&auto=format&fit=crop"
+              alt="Debugging"
+            />
+            <div class="imgcap">Debugging</div>
+          </div>
+
+          <div class="imgcard">
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop"
+              alt="Trabajo en equipo"
+            />
+            <div class="imgcap">Trabajo en equipo</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN INTERACTIVA -->
+      <section id="comments" class="section">
+        <h2>Feedback Loop</h2>
+        <p class="muted">
+          Deja un comentario. Se guarda en el backend y aparece abajo sin recargar.
+        </p>
+
+        <div class="panel">
+          <!-- FORM -->
+          <div class="box">
+            <h3>Nuevo comentario</h3>
+
+            <form id="commentForm" class="form">
+              <label>
+                Nombre
+                <input id="nombre" type="text" placeholder="Tu nombre" />
+              </label>
+
+              <label>
+                Email
+                <input id="email" type="email" placeholder="tucorreo@gmail.com" />
+              </label>
+
+              <label>
+                Celular
+                <input id="cell" type="text" placeholder="Ej: 3134476364" />
+              </label>
+
+              <label>
+                Servicio
+                <select id="servicio">
+                  <option value="Diseño web">Diseño web</option>
+                  <option value="SEO">SEO</option>
+                  <option value="Automatización">Automatización</option>
+                  <option value="Backend Node.js">Backend Node.js</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </label>
+
+              <label>
+                Mensaje
+                <textarea id="mensaje" rows="4" placeholder="Escribe tu comentario..."></textarea>
+              </label>
+
+              <button type="submit" class="btn">Push Comment</button>
+
+              <div id="status" class="status"></div>
+            </form>
+          </div>
+
+          <!-- LISTA -->
+          <div class="box">
+            <div class="boxhead">
+              <h3>Recent_Comments</h3>
+              <button id="refreshBtn" class="btn ghost" type="button">Refresh</button>
+            </div>
+
+            <div id="commentsList" class="list"></div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          Hecho con HTML/CSS/JS + Node.js (backend) — Proyecto académico.
+        </footer>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
