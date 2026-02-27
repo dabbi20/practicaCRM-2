@@ -173,7 +173,7 @@ Se solucionó el error “Email es obligatorio” adaptando el frontend para env
 
 #  4️⃣ Texto para describirlo en Replit/Glitch
 
-Puedes poner esto en la descripción del proyecto:
+Puedes poner esto en la descripción del proyecto: https://codeart-backend--davidack1234567.replit.app
 
 > Proyecto académico que integra frontend (HTML/CSS/JS) con backend Node.js + Express usando arquitectura modular por capas. Implementa CRUD completo en memoria con validaciones y separación de responsabilidades.
 
